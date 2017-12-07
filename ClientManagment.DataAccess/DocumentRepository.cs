@@ -1,0 +1,49 @@
+﻿using ClientManagment.DataAccess.Helpers;
+using ClientsManagement.Database.Configuration;
+using ClientsManagment.Models;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ClientManagment.DataAccess
+{
+    public class DocumentRepository<T> : IDocumentRepository<T> where T : IEntity
+    {
+        private readonly string databasePath;
+
+        public DocumentRepository()
+        {
+            this.databasePath = DbConfig.Configuration.GetDbFilePathByEntity<T>();
+        }
+
+        public IList<T> GetAll()
+        {
+            string json = FileHelper.ReadFile(this.databasePath);
+            return JsonConvert.DeserializeObject<IList<T>>(json);
+        }
+
+        public T Add(T model)
+        {
+            model.Id = Guid.NewGuid();
+
+            var all = this.GetAll();
+            all.Add(model);
+
+            string json = JsonConvert.SerializeObject(all);
+            FileHelper.OverwriteFile(databasePath, json);
+
+            return model;
+        }
+
+        public void Delete(Guid Id)
+        {
+            var all = this.GetAll();
+            var deleteItem = all.FirstOrDefault(x => x.Id == Id);
+            all.Remove(deleteItem);
+
+            string json = JsonConvert.SerializeObject(all);
+            FileHelper.OverwriteFile(databasePath, json);
+        }
+    }
+}

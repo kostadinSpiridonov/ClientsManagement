@@ -1,0 +1,11 @@
+﻿namespace ClientsManagment.Models
+{
+    public class IndividualClient : Client
+    {
+        public string FullName { get; set; }
+
+        public string Gender { get; set; }
+
+        public string IdentificationNumber { get; set; }
+    }
+}

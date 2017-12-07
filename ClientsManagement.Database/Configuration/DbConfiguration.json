@@ -1,0 +1,13 @@
+﻿{
+  "DbFolderName": "ClientsManagement",
+  "DbFiles": [
+    {
+      "InnerFilePath": "ClientsManagement/IndividualClientsDb.json",
+      "EntityName": "IndividualClient"
+    },
+    {
+      "InnerFilePath": "ClientsManagement/LegalEntityClientsDb.json",
+      "EntityName": "LegalEntityCLient"
+    }
+  ]
+}
