@@ -32,7 +32,7 @@ namespace ClientsManagement.Database.Configuration
             var jsonObject = JObject.Parse(json);
             string query = $"$.DbFiles[?(@.EntityName == '{typeName}')].InnerFilePath";
 
-            string innerPath = jsonObject?.SelectToken(query).ToString();
+            string innerPath = jsonObject?.SelectToken(query)?.ToString();
             return Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     innerPath);

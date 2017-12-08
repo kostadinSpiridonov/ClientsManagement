@@ -32,8 +32,10 @@ namespace ClientsManagment
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.NavigationContainer = new System.Windows.Forms.Panel();
             this.addClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addIndividualClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addLevalEntityClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NavigationContainer = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +57,29 @@ namespace ClientsManagment
             this.clientsToolStripMenuItem.Text = "Clients";
             this.clientsToolStripMenuItem.Click += new System.EventHandler(this.clientsToolStripMenuItem_Click);
             // 
+            // addClientToolStripMenuItem
+            // 
+            this.addClientToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addIndividualClientToolStripMenuItem,
+            this.addLevalEntityClientToolStripMenuItem});
+            this.addClientToolStripMenuItem.Name = "addClientToolStripMenuItem";
+            this.addClientToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.addClientToolStripMenuItem.Text = "Add Client";
+            // 
+            // addIndividualClientToolStripMenuItem
+            // 
+            this.addIndividualClientToolStripMenuItem.Name = "addIndividualClientToolStripMenuItem";
+            this.addIndividualClientToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.addIndividualClientToolStripMenuItem.Text = "Add Individual Client";
+            this.addIndividualClientToolStripMenuItem.Click += new System.EventHandler(this.addIndividualClientToolStripMenuItem_Click);
+            // 
+            // addLevalEntityClientToolStripMenuItem
+            // 
+            this.addLevalEntityClientToolStripMenuItem.Name = "addLevalEntityClientToolStripMenuItem";
+            this.addLevalEntityClientToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.addLevalEntityClientToolStripMenuItem.Text = "Add Leval Entity Client";
+            this.addLevalEntityClientToolStripMenuItem.Click += new System.EventHandler(this.addLevalEntityClientToolStripMenuItem_Click);
+            // 
             // NavigationContainer
             // 
             this.NavigationContainer.AutoSize = true;
@@ -64,13 +89,6 @@ namespace ClientsManagment
             this.NavigationContainer.Name = "NavigationContainer";
             this.NavigationContainer.Size = new System.Drawing.Size(284, 237);
             this.NavigationContainer.TabIndex = 2;
-            // 
-            // addClientToolStripMenuItem
-            // 
-            this.addClientToolStripMenuItem.Name = "addClientToolStripMenuItem";
-            this.addClientToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.addClientToolStripMenuItem.Text = "Add Client";
-            this.addClientToolStripMenuItem.Click += new System.EventHandler(this.addClientToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -94,6 +112,8 @@ namespace ClientsManagment
         private System.Windows.Forms.ToolStripMenuItem clientsToolStripMenuItem;
         private System.Windows.Forms.Panel NavigationContainer;
         private System.Windows.Forms.ToolStripMenuItem addClientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addIndividualClientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addLevalEntityClientToolStripMenuItem;
     }
 }
 

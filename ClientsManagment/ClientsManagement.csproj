@@ -56,8 +56,10 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Mappings\IndividualClientMappings.cs" />
+    <Compile Include="Mappings\LegalEntityClientMappings.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IndividualClientModel.cs" />
+    <Compile Include="Models\LegalEntityClientModel.cs" />
     <Compile Include="Models\SelectListItem.cs" />
     <Compile Include="Notify\BaseNotifier.cs" />
     <Compile Include="Program.cs" />
@@ -69,12 +71,19 @@
     <Compile Include="Validation\ValidatableField.cs" />
     <Compile Include="Validation\Validator.cs" />
     <Compile Include="ViewModels\AddIndividualClientViewModel.cs" />
+    <Compile Include="ViewModels\AddLegalEntityClientViewModel.cs" />
     <Compile Include="ViewModels\ClientsViewModel.cs" />
     <Compile Include="Views\AddIndividualClient.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\AddIndividualClient.Designer.cs">
       <DependentUpon>AddIndividualClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddLegalEntityClientView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AddLegalEntityClientView.Designer.cs">
+      <DependentUpon>AddLegalEntityClientView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ClientsView.cs">
       <SubType>UserControl</SubType>
@@ -96,6 +105,9 @@
     </Compile>
     <EmbeddedResource Include="Views\AddIndividualClient.resx">
       <DependentUpon>AddIndividualClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddLegalEntityClientView.resx">
+      <DependentUpon>AddLegalEntityClientView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ClientsView.resx">
       <DependentUpon>ClientsView.cs</DependentUpon>

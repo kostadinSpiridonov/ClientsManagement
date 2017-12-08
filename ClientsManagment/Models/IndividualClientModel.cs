@@ -1,11 +1,14 @@
 ﻿using ClientsManagment.Notify;
 using ClientsManagment.Validation;
 using ClientsManagment.Validation.Attributes;
+using System;
 
 namespace ClientsManagment.Models
 {
     public class IndividualClientModel : BaseNotifier
     {
+        public Guid Id { get; set; }
+
         [NotNullOrEmpty]
         public ValidatableField<string> Address { get; set; } = new ValidatableField<string>();
 

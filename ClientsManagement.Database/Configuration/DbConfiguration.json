@@ -7,7 +7,7 @@
     },
     {
       "InnerFilePath": "ClientsManagement/LegalEntityClientsDb.json",
-      "EntityName": "LegalEntityCLient"
+      "EntityName": "LegalEntityClient"
     }
   ]
 }
