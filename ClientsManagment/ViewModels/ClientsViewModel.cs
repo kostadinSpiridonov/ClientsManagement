@@ -1,12 +1,13 @@
 ﻿using ClientManagment.DataAccess;
 using ClientsManagment.Models;
+using ClientsManagment.Notify;
 using System;
 using System.ComponentModel;
 using System.Linq;
 
 namespace ClientsManagment.ViewModels
 {
-    public class ClientsViewModel : BaseViewModel
+    public class ClientsViewModel : BaseNotifier
     {
         public BindingList<IndividualClient> IndividualClients { get; set; }
 

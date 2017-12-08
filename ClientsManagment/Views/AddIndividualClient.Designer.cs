@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
-            this.GenderTextBox = new System.Windows.Forms.TextBox();
             this.IdNumTextBox = new System.Windows.Forms.TextBox();
             this.AddressTextBox = new System.Windows.Forms.TextBox();
             this.PhoneTextBox = new System.Windows.Forms.TextBox();
@@ -43,6 +42,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.AddForm = new System.Windows.Forms.GroupBox();
+            this.EmailErrors = new System.Windows.Forms.Label();
+            this.PhoneErrors = new System.Windows.Forms.Label();
+            this.AddressErrors = new System.Windows.Forms.Label();
+            this.IdNumberErrors = new System.Windows.Forms.Label();
+            this.GenderErrors = new System.Windows.Forms.Label();
+            this.FullNameErrors = new System.Windows.Forms.Label();
+            this.GenderComboBox = new System.Windows.Forms.ComboBox();
             this.AddForm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,13 +67,7 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.FullNameTextBox.TabIndex = 1;
-            // 
-            // GenderTextBox
-            // 
-            this.GenderTextBox.Location = new System.Drawing.Point(172, 191);
-            this.GenderTextBox.Name = "GenderTextBox";
-            this.GenderTextBox.Size = new System.Drawing.Size(100, 20);
-            this.GenderTextBox.TabIndex = 2;
+            this.FullNameTextBox.Validated += new System.EventHandler(this.FormTextBox_Validated);
             // 
             // IdNumTextBox
             // 
@@ -75,6 +75,7 @@
             this.IdNumTextBox.Name = "IdNumTextBox";
             this.IdNumTextBox.Size = new System.Drawing.Size(100, 20);
             this.IdNumTextBox.TabIndex = 3;
+            this.IdNumTextBox.Validated += new System.EventHandler(this.FormTextBox_Validated);
             // 
             // AddressTextBox
             // 
@@ -82,6 +83,7 @@
             this.AddressTextBox.Name = "AddressTextBox";
             this.AddressTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddressTextBox.TabIndex = 4;
+            this.AddressTextBox.Validated += new System.EventHandler(this.FormTextBox_Validated);
             // 
             // PhoneTextBox
             // 
@@ -89,6 +91,7 @@
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.PhoneTextBox.TabIndex = 5;
+            this.PhoneTextBox.Validated += new System.EventHandler(this.FormTextBox_Validated);
             // 
             // EmailTextBox
             // 
@@ -96,6 +99,7 @@
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(100, 20);
             this.EmailTextBox.TabIndex = 6;
+            this.EmailTextBox.Validated += new System.EventHandler(this.FormTextBox_Validated);
             // 
             // AddButton
             // 
@@ -162,9 +166,15 @@
             // 
             // AddForm
             // 
+            this.AddForm.Controls.Add(this.GenderComboBox);
+            this.AddForm.Controls.Add(this.EmailErrors);
+            this.AddForm.Controls.Add(this.PhoneErrors);
+            this.AddForm.Controls.Add(this.AddressErrors);
+            this.AddForm.Controls.Add(this.IdNumberErrors);
+            this.AddForm.Controls.Add(this.GenderErrors);
+            this.AddForm.Controls.Add(this.FullNameErrors);
             this.AddForm.Controls.Add(this.FullNameTextBox);
             this.AddForm.Controls.Add(this.label7);
-            this.AddForm.Controls.Add(this.GenderTextBox);
             this.AddForm.Controls.Add(this.label6);
             this.AddForm.Controls.Add(this.IdNumTextBox);
             this.AddForm.Controls.Add(this.label5);
@@ -180,6 +190,69 @@
             this.AddForm.Size = new System.Drawing.Size(499, 456);
             this.AddForm.TabIndex = 14;
             this.AddForm.TabStop = false;
+            // 
+            // EmailErrors
+            // 
+            this.EmailErrors.AutoSize = true;
+            this.EmailErrors.Location = new System.Drawing.Point(295, 371);
+            this.EmailErrors.Name = "EmailErrors";
+            this.EmailErrors.Size = new System.Drawing.Size(41, 13);
+            this.EmailErrors.TabIndex = 19;
+            this.EmailErrors.Text = "label13";
+            // 
+            // PhoneErrors
+            // 
+            this.PhoneErrors.AutoSize = true;
+            this.PhoneErrors.Location = new System.Drawing.Point(295, 332);
+            this.PhoneErrors.Name = "PhoneErrors";
+            this.PhoneErrors.Size = new System.Drawing.Size(41, 13);
+            this.PhoneErrors.TabIndex = 18;
+            this.PhoneErrors.Text = "label12";
+            // 
+            // AddressErrors
+            // 
+            this.AddressErrors.AutoSize = true;
+            this.AddressErrors.Location = new System.Drawing.Point(295, 284);
+            this.AddressErrors.Name = "AddressErrors";
+            this.AddressErrors.Size = new System.Drawing.Size(41, 13);
+            this.AddressErrors.TabIndex = 17;
+            this.AddressErrors.Text = "label11";
+            // 
+            // IdNumberErrors
+            // 
+            this.IdNumberErrors.AutoSize = true;
+            this.IdNumberErrors.Location = new System.Drawing.Point(295, 238);
+            this.IdNumberErrors.Name = "IdNumberErrors";
+            this.IdNumberErrors.Size = new System.Drawing.Size(41, 13);
+            this.IdNumberErrors.TabIndex = 16;
+            this.IdNumberErrors.Text = "label10";
+            // 
+            // GenderErrors
+            // 
+            this.GenderErrors.AutoSize = true;
+            this.GenderErrors.Location = new System.Drawing.Point(295, 191);
+            this.GenderErrors.Name = "GenderErrors";
+            this.GenderErrors.Size = new System.Drawing.Size(35, 13);
+            this.GenderErrors.TabIndex = 15;
+            this.GenderErrors.Text = "label9";
+            // 
+            // FullNameErrors
+            // 
+            this.FullNameErrors.AutoSize = true;
+            this.FullNameErrors.Location = new System.Drawing.Point(295, 119);
+            this.FullNameErrors.Name = "FullNameErrors";
+            this.FullNameErrors.Size = new System.Drawing.Size(34, 13);
+            this.FullNameErrors.TabIndex = 14;
+            this.FullNameErrors.Text = "error8";
+            // 
+            // GenderComboBox
+            // 
+            this.GenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GenderComboBox.FormattingEnabled = true;
+            this.GenderComboBox.Location = new System.Drawing.Point(172, 191);
+            this.GenderComboBox.Name = "GenderComboBox";
+            this.GenderComboBox.Size = new System.Drawing.Size(100, 21);
+            this.GenderComboBox.TabIndex = 20;
             // 
             // AddIndividualClient
             // 
@@ -200,7 +273,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox FullNameTextBox;
-        private System.Windows.Forms.TextBox GenderTextBox;
         private System.Windows.Forms.TextBox IdNumTextBox;
         private System.Windows.Forms.TextBox AddressTextBox;
         private System.Windows.Forms.TextBox PhoneTextBox;
@@ -213,5 +285,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox AddForm;
+        private System.Windows.Forms.Label EmailErrors;
+        private System.Windows.Forms.Label PhoneErrors;
+        private System.Windows.Forms.Label AddressErrors;
+        private System.Windows.Forms.Label IdNumberErrors;
+        private System.Windows.Forms.Label GenderErrors;
+        private System.Windows.Forms.Label FullNameErrors;
+        private System.Windows.Forms.ComboBox GenderComboBox;
     }
 }

@@ -1,23 +1,38 @@
 ﻿using ClientManagment.DataAccess;
+using ClientsManagment.Mappings;
 using ClientsManagment.Models;
+using ClientsManagment.Validation;
 
 namespace ClientsManagment.ViewModels
 {
     public class AddIndividualClientViewModel
     {
-        public IndividualClient ViewData { get; set; }
+        public IndividualClientModel ViewData { get; set; }
 
         private readonly DocumentRepository<IndividualClient> repository;
 
         public AddIndividualClientViewModel()
         {
-            this.ViewData = new IndividualClient();
+            this.ViewData = new IndividualClientModel();
             this.repository = new DocumentRepository<IndividualClient>();
         }
 
         public void Add()
         {
-            this.repository.Add(this.ViewData);
+            bool valid = Validator.ValidateModel(this.ViewData);
+            this.ViewData.NotifyPropertiesChanged();
+
+            if (valid)
+            {
+                var mappedModel = this.ViewData.MapToIndividualClient();
+                this.repository.Add(mappedModel);
+            }
+        }
+
+        public void ValidateProperty(string boundProperyName)
+        {
+            Validator.ValidateProperty(this.ViewData, boundProperyName);
+            this.ViewData.NotifyPropertyChanged(boundProperyName);
         }
     }
 }

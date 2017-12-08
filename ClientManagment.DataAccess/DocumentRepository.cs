@@ -20,7 +20,13 @@ namespace ClientManagment.DataAccess
         public IList<T> GetAll()
         {
             string json = FileHelper.ReadFile(this.databasePath);
-            return JsonConvert.DeserializeObject<IList<T>>(json);
+            var result = JsonConvert.DeserializeObject<IList<T>>(json);
+            if (result == null)
+            {
+                result = new List<T>();
+            }
+
+            return result;
         }
 
         public T Add(T model)
