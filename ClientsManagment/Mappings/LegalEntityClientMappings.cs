@@ -1,4 +1,6 @@
 ﻿using ClientsManagment.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClientsManagment.Mappings
 {
@@ -23,6 +25,31 @@ namespace ClientsManagment.Mappings
                 Type = model.Type?.Value,
                 WebSiteUrl = model.WebSiteUrl?.Value
             };
+        }
+
+        public static CommonClientModel MapToCommonClientModel(this LegalEntityClient model)
+        {
+            if (model == null)
+            {
+                return null;
+            }
+
+            return new CommonClientModel
+            {
+                Name = model.Name,
+                Id = model.Id,
+                IsLegalEntityClient = true
+            };
+        }
+
+        public static IEnumerable<CommonClientModel> MapToCommonClientModel(this IEnumerable<LegalEntityClient> model)
+        {
+            if (model == null)
+            {
+                return null;
+            }
+
+            return model.Select(x => x.MapToCommonClientModel());
         }
     }
 }

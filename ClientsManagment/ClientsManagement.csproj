@@ -57,6 +57,7 @@
     </Compile>
     <Compile Include="Mappings\IndividualClientMappings.cs" />
     <Compile Include="Mappings\LegalEntityClientMappings.cs" />
+    <Compile Include="Models\CommonClientModel.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IndividualClientModel.cs" />
     <Compile Include="Models\LegalEntityClientModel.cs" />
