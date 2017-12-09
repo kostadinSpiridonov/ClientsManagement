@@ -1,4 +1,5 @@
-﻿using ClientsManagment.Views;
+﻿using ClientsManagment.Utils;
+using ClientsManagment.Views;
 using System.Windows.Forms;
 
 namespace ClientsManagment
@@ -8,39 +9,22 @@ namespace ClientsManagment
         public Form1()
         {
             InitializeComponent();
+            NavigationService.SetNavigationContainer(this.NavigationContainer);
         }
-        
+
         private void addIndividualClientToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            if (this.NavigationContainer.Controls.ContainsKey(nameof(AddIndividualClient)))
-            {
-                return;
-            }
-
-            this.NavigationContainer.Controls.Clear();
-            this.NavigationContainer.Controls.Add(new AddIndividualClient());
+            NavigationService.OpenNewControl(new AddIndividualClient());
         }
 
         private void addLevalEntityClientToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            if (this.NavigationContainer.Controls.ContainsKey(nameof(AddLegalEntityClientView)))
-            {
-                return;
-            }
-
-            this.NavigationContainer.Controls.Clear();
-            this.NavigationContainer.Controls.Add(new AddLegalEntityClientView());
+            NavigationService.OpenNewControl(new AddLegalEntityClientView());
         }
 
         private void clientsToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            if (this.NavigationContainer.Controls.ContainsKey(nameof(ClientsView)))
-            {
-                return;
-            }
-
-            this.NavigationContainer.Controls.Clear();
-            this.NavigationContainer.Controls.Add(new ClientsView());
+            NavigationService.OpenNewControl(new ClientsView());
         }
     }
 }

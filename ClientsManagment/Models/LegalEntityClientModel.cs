@@ -1,38 +1,21 @@
-﻿using ClientsManagment.Notify;
-using ClientsManagment.Validation;
-using ClientsManagment.Validation.Attributes;
-using System;
+﻿using System;
 
 namespace ClientsManagment.Models
 {
-    public class LegalEntityClientModel : BaseNotifier
+    public class LegalEntityClientModel : ClientModel
     {
-        [NotNullOrEmpty]
-        public ValidatableField<string> Name { get; set; } = new ValidatableField<string>();
+        public string Name { get; set; }
 
-        [NotNullOrEmpty]
-        public ValidatableField<string> Type { get; set; } = new ValidatableField<string>();
+        public string Type { get; set; }
 
-        [NotNullOrEmpty]
-        public ValidatableField<string> Bulstat { get; set; } = new ValidatableField<string>();
+        public string Bulstat { get; set; }
 
-        public ValidatableField<int> TaxRegistryNumber { get; set; } = new ValidatableField<int>();
+        public int TaxRegisryNumber { get; set; }
 
-        [NotNullOrEmpty]
-        public ValidatableField<string> WebSiteUrl { get; set; } = new ValidatableField<string>();
+        public string WebSiteUrl { get; set; }
 
-        [NotNull]
-        public ValidatableField<Guid> IndividualId { get; set; } = new ValidatableField<Guid>();
+        public Guid IndividualClientId { get; set; }
 
-        [NotNullOrEmpty]
-        public ValidatableField<string> Address { get; set; } = new ValidatableField<string>();
-
-        [NotNullOrEmpty]
-        [Phone]
-        public ValidatableField<string> Phone { get; set; } = new ValidatableField<string>();
-
-        [NotNullOrEmpty]
-        [Email]
-        public ValidatableField<string> Email { get; set; } = new ValidatableField<string>();
+        public string IndividualClientName { get; set; }
     }
 }

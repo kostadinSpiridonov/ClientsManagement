@@ -30,6 +30,7 @@
         {
             this.ClientsContainer = new System.Windows.Forms.ListBox();
             this.DeleteSelectedButton = new System.Windows.Forms.Button();
+            this.DetailsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ClientsContainer
@@ -51,11 +52,22 @@
             this.DeleteSelectedButton.UseVisualStyleBackColor = true;
             this.DeleteSelectedButton.Click += new System.EventHandler(this.DeleteSelectedButton_Click);
             // 
+            // DetailsButton
+            // 
+            this.DetailsButton.Location = new System.Drawing.Point(602, 124);
+            this.DetailsButton.Name = "DetailsButton";
+            this.DetailsButton.Size = new System.Drawing.Size(75, 23);
+            this.DetailsButton.TabIndex = 2;
+            this.DetailsButton.Text = "Details";
+            this.DetailsButton.UseVisualStyleBackColor = true;
+            this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
+            // 
             // ClientsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.Controls.Add(this.DetailsButton);
             this.Controls.Add(this.DeleteSelectedButton);
             this.Controls.Add(this.ClientsContainer);
             this.Name = "ClientsView";
@@ -68,5 +80,6 @@
 
         private System.Windows.Forms.ListBox ClientsContainer;
         private System.Windows.Forms.Button DeleteSelectedButton;
+        private System.Windows.Forms.Button DetailsButton;
     }
 }

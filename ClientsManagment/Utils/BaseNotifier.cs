@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace ClientsManagment.Notify
+namespace ClientsManagment.Utils
 {
     public class BaseNotifier : INotifyPropertyChanged
     {

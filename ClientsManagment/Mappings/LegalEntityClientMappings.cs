@@ -6,7 +6,7 @@ namespace ClientsManagment.Mappings
 {
     public static class LegalEntityClientMappings
     {
-        public static LegalEntityClient MapToLegalEntityClient(this LegalEntityClientModel model)
+        public static LegalEntityClient MapToLegalEntityClient(this AddLegalEntityClientModel model)
         {
             if (model == null)
             {
@@ -50,6 +50,28 @@ namespace ClientsManagment.Mappings
             }
 
             return model.Select(x => x.MapToCommonClientModel());
+        }
+
+        public static LegalEntityClientModel MapToLegalEntityClientModel(this LegalEntityClient model)
+        {
+            if (model == null)
+            {
+                return null;
+            }
+
+            return new LegalEntityClientModel
+            {
+                Address = model.Address,
+                Email = model.Email,
+                Phone = model.Phone,
+                Bulstat = model.Bulstat,
+                IndividualClientId = model.IndividualId,
+                Name = model.Name,
+                TaxRegisryNumber = model.TaxRegisryNumber,
+                Type = model.Type,
+                WebSiteUrl = model.WebSiteUrl,
+                Id = model.Id
+            };
         }
     }
 }

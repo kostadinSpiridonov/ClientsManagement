@@ -6,7 +6,7 @@ namespace ClientsManagment.Mappings
 {
     public static class IndividualClientMappings
     {
-        public static IndividualClient MapToIndividualClient(this IndividualClientModel model)
+        public static IndividualClient MapToIndividualClient(this AddIndividualClientModel model)
         {
             if (model == null)
             {
@@ -23,6 +23,26 @@ namespace ClientsManagment.Mappings
                 Phone = model.Phone?.Value
             };
         }
+
+        public static IndividualClientModel MapToIndividualClientModel(this IndividualClient model)
+        {
+            if (model == null)
+            {
+                return null;
+            }
+
+            return new IndividualClientModel
+            {
+                Address = model.Address,
+                Email = model.Email,
+                FullName = model.FullName,
+                Gender = ((Gender)model.Gender).ToString(),
+                IdentificationNumber = model.IdentificationNumber,
+                Phone = model.Phone,
+                Id = model.Id
+            };
+        }
+
         public static CommonClientModel MapToCommonClientModel(this IndividualClient model)
         {
             if (model == null)

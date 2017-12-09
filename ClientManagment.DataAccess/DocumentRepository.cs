@@ -51,5 +51,10 @@ namespace ClientManagment.DataAccess
             string json = JsonConvert.SerializeObject(all);
             FileHelper.OverwriteFile(databasePath, json);
         }
+
+        public T GetById(Guid Id)
+        {
+            return this.GetAll().FirstOrDefault(x => x.Id == Id);
+        }
     }
 }

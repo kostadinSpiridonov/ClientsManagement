@@ -1,7 +1,7 @@
 ﻿using ClientManagment.DataAccess;
 using ClientsManagment.Mappings;
 using ClientsManagment.Models;
-using ClientsManagment.Notify;
+using ClientsManagment.Utils;
 using System;
 using System.ComponentModel;
 using System.Linq;

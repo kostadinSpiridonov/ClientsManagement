@@ -1,6 +1,8 @@
 ﻿using System.Windows.Forms;
 using ClientsManagment.ViewModels;
 using ClientsManagment.Models;
+using System.Linq;
+using ClientsManagment.Utils;
 
 namespace ClientsManagment.Views
 {
@@ -40,6 +42,26 @@ namespace ClientsManagment.Views
             else
             {
                 this.viewModel.Delete(selectedItem.Id);
+            }
+        }
+
+        private void DetailsButton_Click(object sender, System.EventArgs e)
+        {
+            var selectedItem = (this.ClientsContainer.SelectedItem as CommonClientModel);
+            if (selectedItem == null)
+            {
+                //TODO: Error handling
+            }
+            else
+            {
+                if (selectedItem.IsLegalEntityClient)
+                {
+                    NavigationService.OpenNewControl(new LegalEntityClientDetailsView(selectedItem.Id));
+                }
+                else
+                {
+                    NavigationService.OpenNewControl(new IndividualClientDetailsView(selectedItem.Id));
+                }
             }
         }
     }

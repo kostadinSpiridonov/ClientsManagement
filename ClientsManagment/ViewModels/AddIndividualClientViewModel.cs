@@ -7,13 +7,13 @@ namespace ClientsManagment.ViewModels
 {
     public class AddIndividualClientViewModel
     {
-        public IndividualClientModel ViewData { get; set; }
+        public AddIndividualClientModel ViewData { get; set; }
 
         private readonly DocumentRepository<IndividualClient> repository;
 
         public AddIndividualClientViewModel()
         {
-            this.ViewData = new IndividualClientModel();
+            this.ViewData = new AddIndividualClientModel();
             this.repository = new DocumentRepository<IndividualClient>();
         }
 

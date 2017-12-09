@@ -1,17 +1,18 @@
 ﻿using ClientManagment.DataAccess;
 using ClientsManagment.Mappings;
 using ClientsManagment.Models;
-using ClientsManagment.Notify;
+using ClientsManagment.Utils;
 using ClientsManagment.Validation;
 using System.ComponentModel;
+using System.Linq;
 
 namespace ClientsManagment.ViewModels
 {
     public class AddLegalEntityClientViewModel : BaseNotifier
     {
-        public LegalEntityClientModel ViewData { get; set; }
+        public AddLegalEntityClientModel ViewData { get; set; }
 
-        public BindingList<IndividualClient> IndividualClients { get; set; }
+        public BindingList<CommonClientModel> IndividualClients { get; set; }
 
         private readonly DocumentRepository<LegalEntityClient> legalEntityClientRepository;
 
@@ -19,7 +20,7 @@ namespace ClientsManagment.ViewModels
 
         public AddLegalEntityClientViewModel()
         {
-            this.ViewData = new LegalEntityClientModel();
+            this.ViewData = new AddLegalEntityClientModel();
             this.legalEntityClientRepository = new DocumentRepository<LegalEntityClient>();
             this.individualClientRepository = new DocumentRepository<IndividualClient>();
             this.LoadDataAsync();
@@ -27,10 +28,15 @@ namespace ClientsManagment.ViewModels
 
         private async void LoadDataAsync()
         {
-            this.IndividualClients = new BindingList<IndividualClient>(individualClientRepository.GetAll());
+            var individualClients = this.individualClientRepository
+                .GetAll()
+                .MapToCommonClientModel()
+                .ToList();
+
+            this.IndividualClients = new BindingList<CommonClientModel>(individualClients);
             this.NotifyPropertyChanged(nameof(IndividualClients));
         }
-        
+
         public void Add()
         {
             bool valid = Validator.ValidateModel(this.ViewData);
