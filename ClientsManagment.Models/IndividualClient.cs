@@ -1,4 +1,6 @@
-﻿namespace ClientsManagment.Models
+﻿using System;
+
+namespace ClientsManagment.Models
 {
     public class IndividualClient : Client
     {

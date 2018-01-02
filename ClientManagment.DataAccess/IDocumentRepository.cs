@@ -13,5 +13,7 @@ namespace ClientManagment.DataAccess
         void Delete(Guid Id);
 
         T GetById(Guid Id);
+
+        T Update(T model);
     }
 }

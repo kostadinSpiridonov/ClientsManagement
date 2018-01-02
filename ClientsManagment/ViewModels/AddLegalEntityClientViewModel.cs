@@ -10,7 +10,7 @@ namespace ClientsManagment.ViewModels
 {
     public class AddLegalEntityClientViewModel : BaseNotifier
     {
-        public AddLegalEntityClientModel ViewData { get; set; }
+        public InputLegalEntityClientModel ViewData { get; set; }
 
         public BindingList<CommonClientModel> IndividualClients { get; set; }
 
@@ -20,7 +20,7 @@ namespace ClientsManagment.ViewModels
 
         public AddLegalEntityClientViewModel()
         {
-            this.ViewData = new AddLegalEntityClientModel();
+            this.ViewData = new InputLegalEntityClientModel();
             this.legalEntityClientRepository = new DocumentRepository<LegalEntityClient>();
             this.individualClientRepository = new DocumentRepository<IndividualClient>();
             this.LoadDataAsync();

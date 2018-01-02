@@ -5,7 +5,7 @@ using System;
 
 namespace ClientsManagment.Models
 {
-    public class AddIndividualClientModel : BaseNotifier
+    public class InputIndividualClientModel : BaseNotifier
     {
         public Guid Id { get; set; }
 

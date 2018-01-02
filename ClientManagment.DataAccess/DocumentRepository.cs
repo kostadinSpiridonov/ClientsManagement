@@ -46,6 +46,7 @@ namespace ClientManagment.DataAccess
         {
             var all = this.GetAll();
             var deleteItem = all.FirstOrDefault(x => x.Id == Id);
+            //TODO if deleteItem=null throw
             all.Remove(deleteItem);
 
             string json = JsonConvert.SerializeObject(all);
@@ -55,6 +56,27 @@ namespace ClientManagment.DataAccess
         public T GetById(Guid Id)
         {
             return this.GetAll().FirstOrDefault(x => x.Id == Id);
+        }
+
+        public T Update(T model)
+        {
+            if (model == null)
+            {
+                //TODO: throw exception
+                return default(T);
+            }
+
+            var all = this.GetAll();
+            var deleteItem = all.FirstOrDefault(x => x.Id == model.Id);
+            //TODO if deleteItem=null throw
+            all.Remove(deleteItem);
+
+            all.Add(model);
+            
+            string json = JsonConvert.SerializeObject(all);
+            FileHelper.OverwriteFile(databasePath, json);
+
+            return model;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ClientsManagment.Models;
+using ClientsManagment.Validation;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,7 +7,7 @@ namespace ClientsManagment.Mappings
 {
     public static class IndividualClientMappings
     {
-        public static IndividualClient MapToIndividualClient(this AddIndividualClientModel model)
+        public static IndividualClient MapToIndividualClient(this InputIndividualClientModel model)
         {
             if (model == null)
             {
@@ -66,6 +67,25 @@ namespace ClientsManagment.Mappings
             }
 
             return model.Select(x => x.MapToCommonClientModel());
+        }
+
+        public static InputIndividualClientModel MapToInputIndividualClientModel(this IndividualClient model)
+        {
+            if (model == null)
+            {
+                return null;
+            }
+
+            return new InputIndividualClientModel
+            {
+                Address = new ValidatableField<string>(model.Address),
+                Email = new ValidatableField<string>(model.Email),
+                FullName = new ValidatableField<string>(model.FullName),
+                Gender = new ValidatableField<Gender>((Gender)model.Gender),
+                Id = model.Id,
+                IdentificationNumber = new ValidatableField<string>(model.IdentificationNumber),
+                Phone = new ValidatableField<string>(model.Phone)
+            };
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ClientsManagment.Models;
+using ClientsManagment.Validation;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,7 +7,7 @@ namespace ClientsManagment.Mappings
 {
     public static class LegalEntityClientMappings
     {
-        public static LegalEntityClient MapToLegalEntityClient(this AddLegalEntityClientModel model)
+        public static LegalEntityClient MapToLegalEntityClient(this InputLegalEntityClientModel model)
         {
             if (model == null)
             {
@@ -71,6 +72,29 @@ namespace ClientsManagment.Mappings
                 Type = model.Type,
                 WebSiteUrl = model.WebSiteUrl,
                 Id = model.Id
+            };
+        }
+
+
+        public static InputLegalEntityClientModel MapToInputLegalEntityClientModel(this LegalEntityClient model)
+        {
+            if (model == null)
+            {
+                return null;
+            }
+
+            return new InputLegalEntityClientModel
+            {
+                Address = new ValidatableField<string>(model.Address),
+                Email = new ValidatableField<string>(model.Email),
+                Id = model.Id,
+                Phone = new ValidatableField<string>(model.Phone),
+                Bulstat = new ValidatableField<string>(model.Bulstat),
+                IndividualId = new ValidatableField<System.Guid>(model.IndividualId),
+                Name = new ValidatableField<string>(model.Name),
+                TaxRegistryNumber = new ValidatableField<int>(model.TaxRegisryNumber),
+                Type = new ValidatableField<string>(model.Type),
+                WebSiteUrl = new ValidatableField<string>(model.WebSiteUrl)
             };
         }
     }

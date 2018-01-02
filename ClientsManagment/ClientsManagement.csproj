@@ -59,8 +59,8 @@
     <Compile Include="Mappings\LegalEntityClientMappings.cs" />
     <Compile Include="Models\CommonClientModel.cs" />
     <Compile Include="Models\Gender.cs" />
-    <Compile Include="Models\AddIndividualClientModel.cs" />
-    <Compile Include="Models\AddLegalEntityClientModel.cs" />
+    <Compile Include="Models\InputIndividualClientModel.cs" />
+    <Compile Include="Models\InputLegalEntityClientModel.cs" />
     <Compile Include="Models\IndividualClientModel.cs" />
     <Compile Include="Models\LegalEntityClientModel.cs" />
     <Compile Include="Models\SelectListItem.cs" />
@@ -78,6 +78,8 @@
     <Compile Include="ViewModels\AddLegalEntityClientViewModel.cs" />
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="ViewModels\ClientsViewModel.cs" />
+    <Compile Include="ViewModels\EditIndividualClientViewModel.cs" />
+    <Compile Include="ViewModels\EditLegalEntityClientViewModel.cs" />
     <Compile Include="ViewModels\IndividualClientDetailsViewModel.cs" />
     <Compile Include="ViewModels\LegalEntityClientDetailsViewModel.cs" />
     <Compile Include="Views\AddIndividualClient.cs">
@@ -97,6 +99,18 @@
     </Compile>
     <Compile Include="Views\ClientsView.Designer.cs">
       <DependentUpon>ClientsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditIndividualClientView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\EditIndividualClientView.Designer.cs">
+      <DependentUpon>EditIndividualClientView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditLegalEntityClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\EditLegalEntityClient.Designer.cs">
+      <DependentUpon>EditLegalEntityClient.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IndividualClientDetailsView.cs">
       <SubType>UserControl</SubType>
@@ -130,6 +144,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ClientsView.resx">
       <DependentUpon>ClientsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditIndividualClientView.resx">
+      <DependentUpon>EditIndividualClientView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditLegalEntityClient.resx">
+      <DependentUpon>EditLegalEntityClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\IndividualClientDetailsView.resx">
       <DependentUpon>IndividualClientDetailsView.cs</DependentUpon>

@@ -5,8 +5,10 @@ using System;
 
 namespace ClientsManagment.Models
 {
-    public class AddLegalEntityClientModel : BaseNotifier
+    public class InputLegalEntityClientModel : BaseNotifier
     {
+        public Guid Id { get; set; }
+
         [NotNullOrEmpty]
         public ValidatableField<string> Name { get; set; } = new ValidatableField<string>();
 
