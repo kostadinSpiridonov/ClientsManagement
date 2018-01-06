@@ -24,6 +24,7 @@ namespace ClientsManagment.Models
         public ValidatableField<string> WebSiteUrl { get; set; } = new ValidatableField<string>();
 
         [NotNull]
+        [NotEmptyGuid]
         public ValidatableField<Guid> IndividualId { get; set; } = new ValidatableField<Guid>();
 
         [NotNullOrEmpty]

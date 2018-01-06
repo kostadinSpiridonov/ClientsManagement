@@ -103,7 +103,7 @@ namespace ClientsManagment.Views
             this.IndividualsComboBox.DataBindings.Add(
                 nameof(ComboBox.DataSource),
                 this.viewModel,
-                nameof(AddLegalEntityClientViewModel.IndividualClients));
+                nameof(EditLegalEntityClientViewModel.IndividualClients));
             this.IndividualIdErrors.DataBindings.Add(
                 nameof(TextBox.Text),
                 this.viewModel.Client,

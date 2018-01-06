@@ -4,6 +4,8 @@ using ClientsManagment.Models;
 using ClientsManagment.Utils;
 using ClientsManagment.Validation;
 using System;
+using System.ComponentModel;
+using System.Linq;
 
 namespace ClientsManagment.ViewModels
 {
@@ -11,13 +13,18 @@ namespace ClientsManagment.ViewModels
     {
         public InputLegalEntityClientModel Client { get; set; }
 
-        private readonly DocumentRepository<LegalEntityClient> repository;
+        public BindingList<CommonClientModel> IndividualClients { get; set; }
+
+        private readonly DocumentRepository<LegalEntityClient> legalEntityClientRepository;
+
+        private readonly DocumentRepository<IndividualClient> individualClientRepository;
 
         private readonly Guid clientId;
 
         public EditLegalEntityClientViewModel(Guid id)
         {
-            this.repository = new DocumentRepository<LegalEntityClient>();
+            this.legalEntityClientRepository = new DocumentRepository<LegalEntityClient>();
+            this.individualClientRepository = new DocumentRepository<IndividualClient>();
             this.Client = new InputLegalEntityClientModel();
             this.clientId = id;
             this.LoadDataAsync();
@@ -31,7 +38,7 @@ namespace ClientsManagment.ViewModels
             if (valid)
             {
                 var mappedModel = this.Client.MapToLegalEntityClient();
-                this.repository.Update(mappedModel);
+                this.legalEntityClientRepository.Update(mappedModel);
             }
         }
 
@@ -43,10 +50,10 @@ namespace ClientsManagment.ViewModels
 
         private async void LoadDataAsync()
         {
-            var data = this.repository
+            var data = this.legalEntityClientRepository
                 .GetById(clientId)
                 .MapToInputLegalEntityClientModel();
-            
+
             if (data == null)
             {
                 return;
@@ -54,6 +61,14 @@ namespace ClientsManagment.ViewModels
 
             this.Client = data;
             this.NotifyPropertyChanged(nameof(this.Client));
+
+            var individualClients = this.individualClientRepository
+               .GetAll()
+               .MapToCommonClientModel()
+               .ToList();
+
+            this.IndividualClients = new BindingList<CommonClientModel>(individualClients);
+            this.NotifyPropertyChanged(nameof(this.IndividualClients));
         }
     }
 }

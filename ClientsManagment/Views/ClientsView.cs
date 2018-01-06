@@ -3,6 +3,7 @@ using ClientsManagment.ViewModels;
 using ClientsManagment.Models;
 using System.Linq;
 using ClientsManagment.Utils;
+using System;
 
 namespace ClientsManagment.Views
 {
@@ -15,54 +16,77 @@ namespace ClientsManagment.Views
             InitializeComponent();
 
             this.viewModel = new ClientsViewModel();
-            this.InitBidings();
+            this.InitDataGridView();
             this.SetStyles();
         }
 
-        private void InitBidings()
+        private void InitDataGridView()
         {
-            this.ClientsContainer.DataBindings.Add(nameof(ListBox.DataSource), this.viewModel, nameof(ClientsViewModel.Clients));
-            this.ClientsContainer.DisplayMember = nameof(CommonClientModel.Name);
-            this.ClientsContainer.ValueMember = nameof(CommonClientModel.Id);
+            this.ClientsContainer.CellContentClick += ClientsContainer_CellClick;
+            this.ClientsContainer.AutoGenerateColumns = false;
+            this.ClientsContainer.DataBindings.Add(nameof(DataGridView.DataSource), this.viewModel, nameof(ClientsViewModel.Clients));
+
+            this.ClientsContainer.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(CommonClientModel.Id),
+                Visible = false
+            });
+            this.ClientsContainer.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(CommonClientModel.Name),
+                Name = nameof(CommonClientModel.Name),
+            });
+            this.ClientsContainer.Columns.Add(new DataGridViewButtonColumn
+            {
+                UseColumnTextForButtonValue = true,
+                Text = "Details",
+                Tag = ClientActions.Details
+            });
+            this.ClientsContainer.Columns.Add(new DataGridViewButtonColumn
+            {
+                UseColumnTextForButtonValue = true,
+                Text = "Remove",
+                Tag = ClientActions.Remove
+            });
+            this.ClientsContainer.Columns.Add(new DataGridViewButtonColumn
+            {
+                UseColumnTextForButtonValue = true,
+                Text = "Edit",
+                Tag = ClientActions.Edit
+            });
+        }
+
+        private void ClientsContainer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            var column = grid?.Columns?[e.ColumnIndex];
+            if (column == null)
+            {
+                //TODO: somethning went wrong
+                return;
+            }
+
+            if (column is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                var clientId = (Guid)grid.Rows[e.RowIndex].Cells[0].Value;
+                switch ((ClientActions)column.Tag)
+                {
+                    case ClientActions.Edit:
+                        this.viewModel.NavigateToEdit(clientId);
+                        break;
+                    case ClientActions.Details:
+                        this.viewModel.NavigateToDetails(clientId);
+                        break;
+                    case ClientActions.Remove:
+                        this.viewModel.Delete(clientId);
+                        break;
+                }
+            }
         }
 
         private void SetStyles()
         {
             this.Dock = DockStyle.Fill;
-        }
-
-        private void DeleteSelectedButton_Click(object sender, System.EventArgs e)
-        {
-
-            var selectedItem = (this.ClientsContainer.SelectedItem as CommonClientModel);
-            if (selectedItem == null)
-            {
-                //TODO: Error handling
-            }
-            else
-            {
-                this.viewModel.Delete(selectedItem.Id);
-            }
-        }
-
-        private void DetailsButton_Click(object sender, System.EventArgs e)
-        {
-            var selectedItem = (this.ClientsContainer.SelectedItem as CommonClientModel);
-            if (selectedItem == null)
-            {
-                //TODO: Error handling
-            }
-            else
-            {
-                if (selectedItem.IsLegalEntityClient)
-                {
-                    NavigationService.OpenNewControl(new LegalEntityClientDetailsView(selectedItem.Id));
-                }
-                else
-                {
-                    NavigationService.OpenNewControl(new IndividualClientDetailsView(selectedItem.Id));
-                }
-            }
         }
     }
 }

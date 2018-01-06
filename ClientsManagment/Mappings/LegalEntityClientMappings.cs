@@ -24,7 +24,8 @@ namespace ClientsManagment.Mappings
                 Name = model.Name?.Value,
                 TaxRegisryNumber = model.TaxRegistryNumber.Value,
                 Type = model.Type?.Value,
-                WebSiteUrl = model.WebSiteUrl?.Value
+                WebSiteUrl = model.WebSiteUrl?.Value,
+                Id = model.Id
             };
         }
 

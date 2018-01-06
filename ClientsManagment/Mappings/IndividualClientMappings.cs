@@ -21,7 +21,8 @@ namespace ClientsManagment.Mappings
                 FullName = model.FullName?.Value,
                 Gender = (int)model.Gender?.Value,
                 IdentificationNumber = model.IdentificationNumber?.Value,
-                Phone = model.Phone?.Value
+                Phone = model.Phone?.Value,
+                Id = model.Id
             };
         }
 

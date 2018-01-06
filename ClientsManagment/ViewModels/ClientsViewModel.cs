@@ -2,6 +2,7 @@
 using ClientsManagment.Mappings;
 using ClientsManagment.Models;
 using ClientsManagment.Utils;
+using ClientsManagment.Views;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -24,6 +25,36 @@ namespace ClientsManagment.ViewModels
             this.LoadDataAsync();
         }
 
+        public void NavigateToDetails(Guid id)
+        {
+            if (this.IsLegalEntityClient(id))
+            {
+                NavigationService.OpenNewControl(new LegalEntityClientDetailsView(id));
+            }
+            else
+            {
+                NavigationService.OpenNewControl(new IndividualClientDetailsView(id));
+            }
+        }
+
+        public void NavigateToEdit(Guid id)
+        {
+            if (this.IsLegalEntityClient(id))
+            {
+                NavigationService.OpenNewControl(new EditLegalEntityClient(id));
+            }
+            else
+            {
+                NavigationService.OpenNewControl(new EditIndividualClientView(id));
+            }
+        }
+
+        private bool IsLegalEntityClient(Guid id)
+        {
+            var isLegalEntityClient = this.Clients.FirstOrDefault(x => x.Id == id)?.IsLegalEntityClient;
+            return isLegalEntityClient ?? isLegalEntityClient.Value;
+        }
+
         private async void LoadDataAsync()
         {
             var individualClients = this.individualClientRepository
@@ -44,17 +75,32 @@ namespace ClientsManagment.ViewModels
 
         public void Delete(Guid id)
         {
-            var deleteItem = this.Clients.FirstOrDefault(x => x.Id == id);
-            this.Clients.Remove(deleteItem);
-            this.NotifyPropertyChanged(nameof(Clients));
+            bool deleted = false;
 
+            var deleteItem = this.Clients.FirstOrDefault(x => x.Id == id);
             if (deleteItem.IsLegalEntityClient)
             {
+                deleted = true;
                 this.legalEntityClientRepository.Delete(id);
             }
             else
             {
-                this.individualClientRepository.Delete(id);
+                var legalEntityClients = this.legalEntityClientRepository.GetAll();
+                if (!legalEntityClients.Any(x => x.IndividualId == id))
+                {
+                    deleted = true;
+                    this.individualClientRepository.Delete(id);
+                }
+                else
+                {
+                    //TODO: exception
+                }
+            }
+
+            if (deleted)
+            {
+                this.Clients.Remove(deleteItem);
+                this.NotifyPropertyChanged(nameof(Clients));
             }
         }
     }
