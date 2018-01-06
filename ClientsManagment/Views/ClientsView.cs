@@ -31,29 +31,42 @@ namespace ClientsManagment.Views
                 DataPropertyName = nameof(CommonClientModel.Id),
                 Visible = false
             });
-            this.ClientsContainer.Columns.Add(new DataGridViewTextBoxColumn
+
+            var name = new DataGridViewTextBoxColumn
             {
                 DataPropertyName = nameof(CommonClientModel.Name),
                 Name = nameof(CommonClientModel.Name),
-            });
-            this.ClientsContainer.Columns.Add(new DataGridViewButtonColumn
+                Width = 985
+            };
+            name.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12);
+            this.ClientsContainer.Columns.Add(name);
+
+            var details = new DataGridViewButtonColumn
             {
                 UseColumnTextForButtonValue = true,
                 Text = "Details",
-                Tag = ClientActions.Details
-            });
-            this.ClientsContainer.Columns.Add(new DataGridViewButtonColumn
-            {
-                UseColumnTextForButtonValue = true,
-                Text = "Remove",
-                Tag = ClientActions.Remove
-            });
-            this.ClientsContainer.Columns.Add(new DataGridViewButtonColumn
+                Tag = ClientActions.Details,
+                Width = 100
+            };
+            this.ClientsContainer.Columns.Add(details);
+
+            var edit = new DataGridViewButtonColumn
             {
                 UseColumnTextForButtonValue = true,
                 Text = "Edit",
-                Tag = ClientActions.Edit
-            });
+                Tag = ClientActions.Edit,
+                Width = 100
+            };
+            this.ClientsContainer.Columns.Add(edit);
+
+            var remove = new DataGridViewButtonColumn
+            {
+                UseColumnTextForButtonValue = true,
+                Text = "Remove",
+                Tag = ClientActions.Remove,
+                Width = 100
+            };
+            this.ClientsContainer.Columns.Add(remove);
         }
 
         private void ClientsContainer_CellClick(object sender, DataGridViewCellEventArgs e)

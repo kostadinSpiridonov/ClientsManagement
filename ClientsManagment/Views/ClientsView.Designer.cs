@@ -36,15 +36,20 @@
             // 
             this.ClientsContainer.AllowUserToAddRows = false;
             this.ClientsContainer.AllowUserToDeleteRows = false;
+            this.ClientsContainer.BackgroundColor = System.Drawing.Color.White;
             this.ClientsContainer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ClientsContainer.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.ClientsContainer.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.ClientsContainer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ClientsContainer.Location = new System.Drawing.Point(22, 91);
+            this.ClientsContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ClientsContainer.GridColor = System.Drawing.Color.White;
+            this.ClientsContainer.Location = new System.Drawing.Point(0, 0);
             this.ClientsContainer.Name = "ClientsContainer";
             this.ClientsContainer.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.ClientsContainer.RowHeadersVisible = false;
-            this.ClientsContainer.Size = new System.Drawing.Size(557, 296);
+            this.ClientsContainer.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
+            this.ClientsContainer.RowTemplate.Height = 40;
+            this.ClientsContainer.Size = new System.Drawing.Size(792, 559);
             this.ClientsContainer.TabIndex = 3;
             // 
             // ClientsView

@@ -3,6 +3,7 @@ using ClientsManagment.Mappings;
 using ClientsManagment.Models;
 using ClientsManagment.Utils;
 using ClientsManagment.Validation;
+using ClientsManagment.Views;
 using System.ComponentModel;
 using System.Linq;
 
@@ -47,6 +48,8 @@ namespace ClientsManagment.ViewModels
                 var mappedModel = this.ViewData.MapToLegalEntityClient();
                 this.legalEntityClientRepository.Add(mappedModel);
             }
+
+            NavigationService.OpenNewControl(new ClientsView());
         }
 
         public void ValidateProperty(string boundProperyName)

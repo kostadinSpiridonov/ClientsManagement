@@ -4,6 +4,7 @@ using ClientsManagment.Mappings;
 using ClientsManagment.Models;
 using ClientsManagment.Utils;
 using ClientsManagment.Validation;
+using ClientsManagment.Views;
 using System;
 
 namespace ClientsManagment.ViewModels
@@ -35,6 +36,7 @@ namespace ClientsManagment.ViewModels
                 try
                 {
                     this.repository.Update(mappedModel);
+                    NavigationService.OpenNewControl(new IndividualClientDetailsView(this.clientId));
                 }
                 catch(EntityNotFoundException ex)
                 {
