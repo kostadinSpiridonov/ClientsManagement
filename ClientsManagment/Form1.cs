@@ -10,6 +10,7 @@ namespace ClientsManagment
         {
             InitializeComponent();
             NavigationService.SetNavigationContainer(this.NavigationContainer);
+            NavigationService.OpenNewControl(new WelcomeScreen());
         }
 
         private void addIndividualClientToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -25,6 +26,11 @@ namespace ClientsManagment
         private void clientsToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             NavigationService.OpenNewControl(new ClientsView());
+        }
+
+        private void homeToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            NavigationService.OpenNewControl(new WelcomeScreen());
         }
     }
 }

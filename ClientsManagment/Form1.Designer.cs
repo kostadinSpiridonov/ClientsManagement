@@ -36,17 +36,19 @@ namespace ClientsManagment
             this.addIndividualClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addLevalEntityClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NavigationContainer = new System.Windows.Forms.Panel();
+            this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.homeToolStripMenuItem,
             this.clientsToolStripMenuItem,
             this.addClientToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(284, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1284, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -87,19 +89,27 @@ namespace ClientsManagment
             this.NavigationContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NavigationContainer.Location = new System.Drawing.Point(0, 24);
             this.NavigationContainer.Name = "NavigationContainer";
-            this.NavigationContainer.Size = new System.Drawing.Size(284, 237);
+            this.NavigationContainer.Size = new System.Drawing.Size(1284, 637);
             this.NavigationContainer.TabIndex = 2;
+            // 
+            // homeToolStripMenuItem
+            // 
+            this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.homeToolStripMenuItem.Text = "Home";
+            this.homeToolStripMenuItem.Click += new System.EventHandler(this.homeToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(1284, 661);
             this.Controls.Add(this.NavigationContainer);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Clients Management";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -114,6 +124,7 @@ namespace ClientsManagment
         private System.Windows.Forms.ToolStripMenuItem addClientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addIndividualClientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addLevalEntityClientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem homeToolStripMenuItem;
     }
 }
 

@@ -65,6 +65,11 @@
     <Compile Include="Models\IndividualClientModel.cs" />
     <Compile Include="Models\LegalEntityClientModel.cs" />
     <Compile Include="Models\SelectListItem.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\BaseNotifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,18 +131,20 @@
     <Compile Include="Views\LegalEntityClientDetailsView.Designer.cs">
       <DependentUpon>LegalEntityClientDetailsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\WelcomeScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\WelcomeScreen.Designer.cs">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Views\AddIndividualClient.resx">
       <DependentUpon>AddIndividualClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LegalEntityClientDetailsView.resx">
       <DependentUpon>LegalEntityClientDetailsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WelcomeScreen.resx">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -187,6 +197,11 @@
       <Name>ClientsManagement.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
