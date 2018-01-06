@@ -78,7 +78,7 @@ namespace ClientsManagement.Database.Configuration
 
                     if (!File.Exists(fileName))
                     {
-                        File.Create(fileName);
+                        File.Create(fileName).Dispose();
                     }
                 }
             }
