@@ -14,6 +14,12 @@ namespace ClientsManagment.Views
             InitializeComponent();
             this.viewModel = new LegalEntityClientDetailsViewModel(id);
             this.SetBindings();
+            this.SetStyles();
+        }
+
+        public void SetStyles()
+        {
+            this.Dock = DockStyle.Fill;
         }
 
         private void SetBindings()
