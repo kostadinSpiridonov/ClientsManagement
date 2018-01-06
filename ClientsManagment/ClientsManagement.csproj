@@ -73,7 +73,9 @@
     <Compile Include="Utils\BaseNotifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ExceptionsHandler.cs" />
     <Compile Include="Utils\NavigationService.cs" />
+    <Compile Include="Utils\NotificationService.cs" />
     <Compile Include="Validation\Attributes\EmailAttribute.cs" />
     <Compile Include="Validation\Attributes\NotEmptyGuid.cs" />
     <Compile Include="Validation\Attributes\NotNullAttribute.cs" />
@@ -191,6 +193,10 @@
     <ProjectReference Include="..\ClientsManagement.Database\ClientsManagement.Database.csproj">
       <Project>{cb97cfb5-bd44-4417-91bd-c92ac336efeb}</Project>
       <Name>ClientsManagement.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClientsManagement.EventsHub\ClientsManagement.EventsHub.csproj">
+      <Project>{01142FC7-943E-49DD-93CF-BBE0E551C067}</Project>
+      <Name>ClientsManagement.EventsHub</Name>
     </ProjectReference>
     <ProjectReference Include="..\ClientsManagment.Models\ClientsManagement.Models.csproj">
       <Project>{c26d7f31-6db9-4ebd-aa78-73bcefed10b0}</Project>

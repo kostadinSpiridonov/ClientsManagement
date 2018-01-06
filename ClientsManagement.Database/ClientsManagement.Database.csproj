@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\DbConfig.cs" />
+    <Compile Include="Exceptions\DatabaseCreationException.cs" />
     <Compile Include="Helpers\EmbeddedResourcesHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -54,6 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientsManagement.EventsHub\ClientsManagement.EventsHub.csproj">
+      <Project>{01142FC7-943E-49DD-93CF-BBE0E551C067}</Project>
+      <Name>ClientsManagement.EventsHub</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

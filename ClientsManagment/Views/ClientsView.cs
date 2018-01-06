@@ -62,7 +62,7 @@ namespace ClientsManagment.Views
             var column = grid?.Columns?[e.ColumnIndex];
             if (column == null)
             {
-                //TODO: somethning went wrong
+                NotificationService.PopupSomethingWentWrong("Please try again!");
                 return;
             }
 

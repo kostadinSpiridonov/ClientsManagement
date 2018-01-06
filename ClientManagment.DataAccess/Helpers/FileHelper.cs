@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClientManagment.DataAccess.Exceptions;
+using ClientsManagement.EventHub;
+using System;
 using System.IO;
 
 namespace ClientManagment.DataAccess.Helpers
@@ -15,10 +17,10 @@ namespace ClientManagment.DataAccess.Helpers
                     result = stream.ReadToEnd();
                 }
             }
-            //TODO: Fix it
             catch (Exception e)
             {
-                var a = e;
+                // Log here
+                ExceptionsHub.CreateExceptionEvent(new DatabaseAccessException());
             }
 
             return result;
@@ -34,10 +36,10 @@ namespace ClientManagment.DataAccess.Helpers
                     stream.Write(content);
                 }
             }
-            //TODO: Fix it
             catch (Exception e)
             {
-                var a = e;
+                // Log here
+                ExceptionsHub.CreateExceptionEvent(new DatabaseAccessException());
             }
 
             return result;

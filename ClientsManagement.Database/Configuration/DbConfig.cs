@@ -2,6 +2,8 @@
 using ClientsManagement.Database.Helpers;
 using System.IO;
 using System;
+using ClientsManagement.Database.Exceptions;
+using ClientsManagement.EventHub;
 
 namespace ClientsManagement.Database.Configuration
 {
@@ -62,7 +64,7 @@ namespace ClientsManagement.Database.Configuration
             }
             catch (Exception e)
             {
-                //TODO: FIx it
+                ExceptionsHub.CreateExceptionEvent(new DatabaseCreationException());
             }
         }
 
@@ -84,7 +86,7 @@ namespace ClientsManagement.Database.Configuration
             }
             catch (Exception e)
             {
-                //TODO: FIx it
+                ExceptionsHub.CreateExceptionEvent(new DatabaseCreationException());
             }
         }
     }

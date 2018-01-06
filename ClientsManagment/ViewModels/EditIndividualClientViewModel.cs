@@ -1,4 +1,5 @@
 ﻿using ClientManagment.DataAccess;
+using ClientManagment.DataAccess.Exceptions;
 using ClientsManagment.Mappings;
 using ClientsManagment.Models;
 using ClientsManagment.Utils;
@@ -31,7 +32,18 @@ namespace ClientsManagment.ViewModels
             if (valid)
             {
                 var mappedModel = this.Client.MapToIndividualClient();
-                this.repository.Update(mappedModel);
+                try
+                {
+                    this.repository.Update(mappedModel);
+                }
+                catch(EntityNotFoundException ex)
+                {
+                    NotificationService.PopupSomethingWentWrong("This client couldn't be found!");
+                }
+                catch(ArgumentNullException ex)
+                {
+                    NotificationService.PopupSomethingWentWrong("Please try again later!");
+                }
             }
         }
 

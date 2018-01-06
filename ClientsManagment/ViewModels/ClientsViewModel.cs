@@ -1,4 +1,5 @@
 ﻿using ClientManagment.DataAccess;
+using ClientManagment.DataAccess.Exceptions;
 using ClientsManagment.Mappings;
 using ClientsManagment.Models;
 using ClientsManagment.Utils;
@@ -80,20 +81,35 @@ namespace ClientsManagment.ViewModels
             var deleteItem = this.Clients.FirstOrDefault(x => x.Id == id);
             if (deleteItem.IsLegalEntityClient)
             {
-                deleted = true;
-                this.legalEntityClientRepository.Delete(id);
+                try
+                {
+                    this.legalEntityClientRepository.Delete(id);
+                    deleted = true;
+                }
+                catch (EntityNotFoundException ex)
+                {
+                    NotificationService.PopupSomethingWentWrong("This client couldn't be found!");
+                }
             }
             else
             {
                 var legalEntityClients = this.legalEntityClientRepository.GetAll();
                 if (!legalEntityClients.Any(x => x.IndividualId == id))
                 {
-                    deleted = true;
-                    this.individualClientRepository.Delete(id);
+                    try
+                    {
+                        this.individualClientRepository.Delete(id);
+                        deleted = true;
+                    }
+                    catch (EntityNotFoundException ex)
+                    {
+                        NotificationService.PopupSomethingWentWrong("This client couldn't be found!");
+
+                    }
                 }
                 else
                 {
-                    //TODO: exception
+                    NotificationService.PopupSomethingWentWrong("You can't delete this client, because is used by another one!");
                 }
             }
 

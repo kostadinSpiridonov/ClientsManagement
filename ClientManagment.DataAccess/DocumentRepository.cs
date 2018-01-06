@@ -1,9 +1,11 @@
-﻿using ClientManagment.DataAccess.Helpers;
+﻿using ClientManagment.DataAccess.Exceptions;
+using ClientManagment.DataAccess.Helpers;
 using ClientsManagement.Database.Configuration;
 using ClientsManagment.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace ClientManagment.DataAccess
@@ -46,7 +48,11 @@ namespace ClientManagment.DataAccess
         {
             var all = this.GetAll();
             var deleteItem = all.FirstOrDefault(x => x.Id == Id);
-            //TODO if deleteItem=null throw
+            if (deleteItem == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
             all.Remove(deleteItem);
 
             string json = JsonConvert.SerializeObject(all);
@@ -62,17 +68,20 @@ namespace ClientManagment.DataAccess
         {
             if (model == null)
             {
-                //TODO: throw exception
-                return default(T);
+                throw new ArgumentNullException();
             }
 
             var all = this.GetAll();
             var deleteItem = all.FirstOrDefault(x => x.Id == model.Id);
-            //TODO if deleteItem=null throw
+            if (model == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
             all.Remove(deleteItem);
 
             all.Add(model);
-            
+
             string json = JsonConvert.SerializeObject(all);
             FileHelper.OverwriteFile(databasePath, json);
 

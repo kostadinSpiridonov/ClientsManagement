@@ -1,4 +1,5 @@
 ﻿using ClientsManagement.Database.Configuration;
+using ClientsManagment.Utils;
 using System;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace ClientsManagment
         [STAThread]
         static void Main()
         {
+            ExceptionsHandler.Initialize();
             DbConfig.Configuration.ConfigureDbFiles();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
