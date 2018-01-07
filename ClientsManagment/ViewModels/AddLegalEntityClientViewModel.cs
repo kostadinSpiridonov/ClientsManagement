@@ -47,9 +47,8 @@ namespace ClientsManagment.ViewModels
             {
                 var mappedModel = this.ViewData.MapToLegalEntityClient();
                 this.legalEntityClientRepository.Add(mappedModel);
+                NavigationService.OpenNewControl(new ClientsView());
             }
-
-            NavigationService.OpenNewControl(new ClientsView());
         }
 
         public void ValidateProperty(string boundProperyName)

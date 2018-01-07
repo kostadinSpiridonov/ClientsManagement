@@ -28,9 +28,9 @@ namespace ClientsManagment.ViewModels
             {
                 var mappedModel = this.ViewData.MapToIndividualClient();
                 this.repository.Add(mappedModel);
-            }
 
-            NavigationService.OpenNewControl(new ClientsView());
+                NavigationService.OpenNewControl(new ClientsView());
+            }
         }
 
         public void ValidateProperty(string boundProperyName)
